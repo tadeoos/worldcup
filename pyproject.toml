@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "worldcup"
+version = "0.1.0"
+description = "A simple CLI to stay up to date with 2018 World Cup"
+license = "MIT"
+authors = ["Tadek Teleżyński <tadekte@gmail.com>"]
+readme = 'README.md'
+repository = "https://github.com/tadeoos/worldcup"
+homepage = "https://github.com/tadeoos/worldcup"
+keywords = ['worldcup', 'cli', 'fifa']
+
+[tool.poetry.dependencies]
+python = "~2.7 || ^3.4"
+requests = "^2.19"
+click = "^6.7"
+pytz = "^2018.4"
+tzlocal = "^1.5"
+python-dateutil = "^2.7"
+future-fstrings = "^0.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[tool.poetry.scripts]
+my-script = 'worldcup:worldcup'
