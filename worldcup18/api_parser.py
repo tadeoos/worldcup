@@ -7,7 +7,7 @@ import pytz
 from tzlocal import get_localzone
 from collections import defaultdict
 
-from worldcup.utils import iso_to_datetime, get_nice_date
+from worldcup18.utils import iso_to_datetime, get_nice_date
 
 
 class WorldCupData:
@@ -126,4 +126,4 @@ class WorldCupData:
         for team, info in sorted(table.items(), key=lambda k: (k[1]['points'], k[1]['scored'] - k[1]['conceded']), reverse=1):
             ret_str += "\n{0: <26}  {1}  {2}  {3}  {4}".format(
                 team, info['played'], info['scored'], info['conceded'], info['points'])
-        return ret_str.encode('utf-8')
+        return ret_str

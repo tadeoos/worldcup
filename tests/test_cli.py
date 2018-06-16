@@ -2,7 +2,7 @@
 from __future__ import print_function, absolute_import
 
 from click.testing import CliRunner
-from worldcup.worldcup import cli
+from worldcup18.worldcup import cli
 
 
 def test_worldcup_cli_help():

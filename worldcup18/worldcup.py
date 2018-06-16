@@ -5,7 +5,7 @@ from __future__ import absolute_import
 import sys
 import click
 
-from worldcup.api_parser import WorldCupData
+from worldcup18.api_parser import WorldCupData
 
 
 @click.group(invoke_without_command=True)

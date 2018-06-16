@@ -1,6 +1,6 @@
 # - *- coding: utf- 8 - *-
 from __future__ import print_function, absolute_import
-from worldcup.api_parser import WorldCupData
+from worldcup18.api_parser import WorldCupData
 
 
 def test_get_team_info():

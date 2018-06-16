@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "worldcup"
+name = "worldcup18"
 version = "0.1.0"
 description = "A simple CLI to stay up to date with 2018 World Cup"
 license = "MIT"
@@ -21,4 +21,4 @@ python-dateutil = "^2.7"
 pytest = "^3.0"
 
 [tool.poetry.scripts]
-worldcup = 'worldcup.worldcup:cli'
+worldcup = 'worldcup18.worldcup:cli'
