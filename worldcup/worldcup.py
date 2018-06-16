@@ -12,7 +12,7 @@ def cli():
     """
 
 
-@cli.command('nearest', short_help='Show nearest match info')
+@cli.command('next', short_help='Show nearest match info')
 def nearest():
     wc_data = WorldCupData()
     click.secho(wc_data.match_as_str(wc_data.get_nearest_match()), bold=1, fg="blue")

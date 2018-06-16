@@ -1,10 +1,10 @@
 # worldcup
 A simple CLI to stay up to date with 2018 World Cup
 
-## DEMO
+## demo
 
 ```bash
-$ worldcup/worldcup.py nearest
+$ worldcup/worldcup.py next
 Match #5: France vs Australia
 When: Saturday, 16. June 2018 12:00PM
 Where: Kazan
@@ -17,6 +17,17 @@ Uruguay                     1  1  0  3
 Egypt                       1  0  1  0
 Saudi Arabia                1  0  5  0
 
+$ worldcup/worldcup.py --help
+Usage: worldcup.py [OPTIONS] COMMAND [ARGS]...
+
+  CLI tool for being up to date with 2018 World Cup
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  groups  Show group info
+  next    Show nearest match info
 ```
 ## acknowledgments
 
