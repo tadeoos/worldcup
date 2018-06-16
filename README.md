@@ -3,9 +3,9 @@ A simple CLI to stay up to date with 2018 World Cup
 
 ## demo
 
-```bash
+```
 $ worldcup/worldcup.py next
-Match #5: France vs Australia
+Match #5: 🇫🇷  France vs Australia 🇦🇺
 When: Saturday, 16. June 2018 12:00PM
 Where: Kazan
 
@@ -29,6 +29,9 @@ Commands:
   groups  Show group info
   next    Show nearest match info
 ```
+
+## developement
+
 ## acknowledgments
 
 World Cup data available thanks to json file from [lsv fifa-worldcup-2018](https://github.com/lsv/fifa-worldcup-2018)

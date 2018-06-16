@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import sys
 import click
 
@@ -20,9 +21,11 @@ def nearest():
 
 @cli.command('groups', short_help='Show group info')
 @click.argument('group_names', nargs=-1)
-@click.option('-a', '--all-groups', default=False, help="Show info for all groups")
 @click.option('--table/--no-table', default=True, help="Show group table")
-def groups(group_names, all_groups, table):
+def groups(group_names, table):
+    """Show info for specific group(s).
+    If groups are not specified shows info for all of them."""
+
     possible_groups = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
 
     def check_args():
@@ -32,7 +35,7 @@ def groups(group_names, all_groups, table):
                 sys.exit(1)
 
     check_args()
-    if all_groups or not len(group_names):
+    if not len(group_names):
         group_names = possible_groups
     wc_data = WorldCupData()
     if table:
@@ -40,6 +43,20 @@ def groups(group_names, all_groups, table):
             group = g.lower()
             click.secho(wc_data.group_table_as_str(group), fg="green")
             click.echo()
+
+
+@cli.command('knockout', short_help='Show info about knockout phase')
+def knockout():
+    # wc_data = WorldCupData()
+    click.secho("Not supported yet", bold=1, fg="red")
+
+
+@cli.command('stats', short_help='Show info about specific country')
+@click.option('-c', '--country', help="Select country")
+@click.option('--table/--no-table', default=False, help="Show group table")
+def stats():
+    # wc_data = WorldCupData()
+    click.secho("Not supported yet", bold=1, fg="red")
 
 
 if __name__ == '__main__':

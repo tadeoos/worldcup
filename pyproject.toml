@@ -16,7 +16,6 @@ click = "^6.7"
 pytz = "^2018.4"
 tzlocal = "^1.5"
 python-dateutil = "^2.7"
-future-fstrings = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"

@@ -1,17 +1,13 @@
+# - *- coding: utf- 8 - *-
+from __future__ import print_function
+
 import requests
 import datetime
-import dateutil.parser
 import pytz
 from tzlocal import get_localzone
 from collections import defaultdict
 
-
-def iso_to_datetime(s):
-    return dateutil.parser.parse(s)
-
-
-def get_nice_date(match_date):
-    return iso_to_datetime(match_date).astimezone(get_localzone()).strftime("%A, %d. %B %Y %I:%M%p")
+from utils import iso_to_datetime, get_nice_date
 
 
 class WorldCupData:
@@ -31,7 +27,7 @@ class WorldCupData:
         try:
             object_dict = [obj for obj in objects if obj["id"] == id_][0]
         except IndexError:
-            raise ValueError(f"There is no {key_} with id: {id_}")
+            raise ValueError("There is no {} with id: {}".format(key_, id_))
         if attr:
             return object_dict[attr]
         else:
@@ -102,13 +98,26 @@ class WorldCupData:
         home_team = self.get_team_info(match["home_team"])
         away_team = self.get_team_info(match["away_team"])
         if match['finished']:
-            return f"""Match #{match['name']}: {home_team['emojiString']}{home_team['name']} vs {away_team["name"]}{away_team["emojiString"]}
-Result: {match['home_result']} : {match['away_result']}
-Date: {get_nice_date(match["date"])}"""
+            return "Match #{}: {}  {} vs {} {}\nResult: {} : {}\nDate: {}".format(
+                match['name'],
+                home_team['emojiString'],
+                home_team['name'],
+                away_team["name"],
+                away_team["emojiString"],
+                match['home_result'],
+                match['away_result'],
+                get_nice_date(match["date"])
+            )
         else:
-            return f"""Match #{match['name']}: {home_team["name"]} vs {away_team["name"]}
-When: {get_nice_date(match["date"])}
-Where: {self.get_stadium_info(match["stadium"], "city")}"""
+            return "Match #{}: {}  {} vs {} {}\nWhen: {}\nWhere: {}".format(
+                match['name'],
+                home_team['emojiString'],
+                home_team['name'],
+                away_team["name"],
+                away_team["emojiString"],
+                get_nice_date(match["date"]),
+                self.get_stadium_info(match["stadium"], "city")
+            )
 
     def group_table_as_str(self, group):
         table = self.calculate_group_table(group)
