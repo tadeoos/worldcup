@@ -1,4 +1,4 @@
-from .api_parser import WorldCupData
+from worldcup.api_parser import WorldCupData
 
 
 def test_get_team_info():
