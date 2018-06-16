@@ -7,7 +7,7 @@ def test_get_team_info():
     wcdata = WorldCupData()
     assert wcdata.get_team_info(1) == {
         "emoji": "flag-ru",
-        "emojiString": u"🇷🇺",
+        "emojiString": "🇷🇺",
         "fifaCode": "RUS",
         "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.png",
         "id": 1,
