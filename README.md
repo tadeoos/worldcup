@@ -1,7 +1,13 @@
-# worldcup
+# worldcup18
+
 [![Build Status](https://travis-ci.org/tadeoos/worldcup.svg?branch=master)](https://travis-ci.org/tadeoos/worldcup)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)](https://pypi.org/project/worldcup18/)
 
 A simple CLI to stay up to date with 2018 World Cup
+
+## installation
+
+> pip install worldcup18
 
 ## demo
 
