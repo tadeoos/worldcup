@@ -1,23 +1,25 @@
 # worldcup18
 
 [![Build Status](https://travis-ci.org/tadeoos/worldcup.svg?branch=master)](https://travis-ci.org/tadeoos/worldcup)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)](https://pypi.org/project/worldcup18/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Worldcup18.svg)](https://pypi.org/project/worldcup18/)
 
 A simple CLI to stay up to date with 2018 World Cup
 
 ## installation
 
-> pip install worldcup18
+```
+pip install worldcup18
+```
 
 ## demo
 
 ```
-$ worldcup/worldcup.py next
+$ worldcup next
 Match #5: 🇫🇷  France vs Australia 🇦🇺
 When: Saturday, 16. June 2018 12:00PM
 Where: Kazan
 
-$ worldcup/worldcup.py groups a
+$ worldcup groups a
 GROUP A                    MP GF GA PTS
 ---------------------------------------
 Russia                      1  5  0  3
@@ -25,7 +27,7 @@ Uruguay                     1  1  0  3
 Egypt                       1  0  1  0
 Saudi Arabia                1  0  5  0
 
-$ worldcup/worldcup.py --help
+$ worldcup --help
 Usage: worldcup.py [OPTIONS] COMMAND [ARGS]...
 
   CLI tool for being up to date with 2018 World Cup
