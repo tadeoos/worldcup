@@ -7,8 +7,7 @@ from collections import defaultdict
 
 
 def iso_to_datetime(s):
-    d = dateutil.parser.parse(s)
-    return d
+    return dateutil.parser.parse(s)
 
 
 def get_nice_date(match_date):
@@ -61,25 +60,30 @@ class WorldCupData:
         return [self.get_team_info(team, "name") for team in group_teams]
 
     def calculate_group_table(self, group):
-        scores = {team: defaultdict(int) for team in self.get_group_members(group)}
+        table = {team: defaultdict(int) for team in self.get_group_members(group)}
         matches = self.get_group_matches(group)
+
         for match in filter(lambda m: m['finished'] is True, matches):
+
             home_team = self.get_team_info(match["home_team"], "name")
+            table[home_team]['played'] += 1
+            table[home_team]['scored'] += match["home_result"]
+            table[home_team]['conceded'] += match["away_result"]
+
             away_team = self.get_team_info(match["away_team"], "name")
-            scores[home_team]['played'] += 1
-            scores[away_team]['played'] += 1
-            scores[home_team]['scored'] += match["home_result"]
-            scores[home_team]['conceded'] += match["away_result"]
-            scores[away_team]['scored'] += match["away_result"]
-            scores[away_team]['conceded'] += match["home_result"]
+            table[away_team]['played'] += 1
+            table[away_team]['scored'] += match["away_result"]
+            table[away_team]['conceded'] += match["home_result"]
+
             if match["home_result"] > match["away_result"]:
-                scores[home_team]['points'] += 3
-            elif match["home_result"] == match["away_result"]:
-                scores[home_team]['points'] += 1
-                scores[away_team]['points'] += 1
+                table[home_team]['points'] += 3
+            elif match["home_result"] < match["away_result"]:
+                table[away_team]["points"] += 3
             else:
-                scores[away_team]["points"] += 3
-        return scores
+                table[home_team]['points'] += 1
+                table[away_team]['points'] += 1
+
+        return table
 
     def get_nearest_match(self):
         systimezone = get_localzone()  # System non-DST timezone
@@ -94,7 +98,7 @@ class WorldCupData:
                 nearest = (match, time_diff)
         return nearest[0]
 
-    def print_match(self, match):
+    def match_as_str(self, match):
         home_team = self.get_team_info(match["home_team"])
         away_team = self.get_team_info(match["away_team"])
         if match['finished']:
@@ -106,13 +110,9 @@ Date: {get_nice_date(match["date"])}"""
 When: {get_nice_date(match["date"])}
 Where: {self.get_stadium_info(match["stadium"], "city")}"""
 
-    def group_table(self, group, as_str=True, as_dict=False):
+    def group_table_as_str(self, group):
         table = self.calculate_group_table(group)
-        if as_dict:
-            return table
-        assert as_str
-        ret_str = ''
-        ret_str += 'GROUP {0: <20} MP GF GA PTS\n'.format(group.upper())
+        ret_str = 'GROUP {0: <20} MP GF GA PTS\n'.format(group.upper())
         ret_str += '-' * 39
         for team, info in sorted(table.items(), key=lambda k: (k[1]['points'], k[1]['scored'] - k[1]['conceded']), reverse=1):
             ret_str += "\n{0: <26}  {1}  {2}  {3}  {4}".format(

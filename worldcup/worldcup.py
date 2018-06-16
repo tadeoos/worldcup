@@ -15,7 +15,7 @@ def cli():
 @cli.command('nearest', short_help='Show nearest match info')
 def nearest():
     wc_data = WorldCupData()
-    click.secho(wc_data.print_match(wc_data.get_nearest_match()), bold=1, fg="blue")
+    click.secho(wc_data.match_as_str(wc_data.get_nearest_match()), bold=1, fg="blue")
 
 
 @cli.command('groups', short_help='Show group info')
@@ -38,7 +38,7 @@ def groups(group_names, all_groups, table):
     if table:
         for g in group_names:
             group = g.lower()
-            click.secho(wc_data.group_table(group), fg="green")
+            click.secho(wc_data.group_table_as_str(group), fg="green")
             click.echo()
 
 
