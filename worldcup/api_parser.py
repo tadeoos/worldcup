@@ -7,7 +7,7 @@ import pytz
 from tzlocal import get_localzone
 from collections import defaultdict
 
-from utils import iso_to_datetime, get_nice_date
+from worldcup.utils import iso_to_datetime, get_nice_date
 
 
 class WorldCupData:
