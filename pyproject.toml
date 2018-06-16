@@ -21,4 +21,4 @@ python-dateutil = "^2.7"
 pytest = "^3.0"
 
 [tool.poetry.scripts]
-my-script = 'worldcup:worldcup'
+worldcup = 'worldcup.worldcup:cli'
