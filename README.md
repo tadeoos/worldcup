@@ -1,5 +1,6 @@
 # worldcup
 [![Build Status](https://travis-ci.org/tadeoos/worldcup.svg?branch=master)](https://travis-ci.org/tadeoos/worldcup)
+
 A simple CLI to stay up to date with 2018 World Cup
 
 ## demo

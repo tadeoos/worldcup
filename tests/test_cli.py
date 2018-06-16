@@ -1,5 +1,5 @@
 # - *- coding: utf- 8 - *-
-from __future__ import print_function, absolute_import, unicode_literals
+from __future__ import print_function, absolute_import
 
 from click.testing import CliRunner
 from worldcup.worldcup import cli
@@ -27,4 +27,10 @@ Commands:
 def test_worldcup_cli_nearest():
     runner = CliRunner()
     result = runner.invoke(cli, ['next'])
+    assert result.exit_code == 0
+
+
+def test_worldcup_cli_group():
+    runner = CliRunner()
+    result = runner.invoke(cli, ['groups', 'a'])
     assert result.exit_code == 0

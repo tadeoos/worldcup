@@ -1,5 +1,5 @@
 # - *- coding: utf- 8 - *-
-from __future__ import print_function, absolute_import
+from __future__ import print_function, absolute_import, unicode_literals
 
 import requests
 import datetime
@@ -98,7 +98,7 @@ class WorldCupData:
         home_team = self.get_team_info(match["home_team"])
         away_team = self.get_team_info(match["away_team"])
         if match['finished']:
-            return "Match #{}: {}  {} vs {} {}\nResult: {} : {}\nDate: {}".format(
+            return u"Match #{}: {}  {} vs {} {}\nResult: {} : {}\nDate: {}".format(
                 match['name'],
                 home_team['emojiString'],
                 home_team['name'],
@@ -109,7 +109,7 @@ class WorldCupData:
                 get_nice_date(match["date"])
             )
         else:
-            return "Match #{}: {}  {} vs {} {}\nWhen: {}\nWhere: {}".format(
+            return u"Match #{}: {}  {} vs {} {}\nWhen: {}\nWhere: {}".format(
                 match['name'],
                 home_team['emojiString'],
                 home_team['name'],
@@ -126,4 +126,4 @@ class WorldCupData:
         for team, info in sorted(table.items(), key=lambda k: (k[1]['points'], k[1]['scored'] - k[1]['conceded']), reverse=1):
             ret_str += "\n{0: <26}  {1}  {2}  {3}  {4}".format(
                 team, info['played'], info['scored'], info['conceded'], info['points'])
-        return ret_str
+        return ret_str.encode('utf-8')

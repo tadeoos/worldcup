@@ -1,5 +1,5 @@
 # - *- coding: utf- 8 - *-
-from __future__ import print_function, absolute_import, unicode_literals
+from __future__ import print_function, absolute_import
 from worldcup.api_parser import WorldCupData
 
 
@@ -7,7 +7,7 @@ def test_get_team_info():
     wcdata = WorldCupData()
     assert wcdata.get_team_info(1) == {
         "emoji": "flag-ru",
-        "emojiString": "🇷🇺",
+        "emojiString": u"🇷🇺",
         "fifaCode": "RUS",
         "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.png",
         "id": 1,
